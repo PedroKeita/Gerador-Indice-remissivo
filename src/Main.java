@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +22,11 @@ public class Main {
             //ler cada linha do arquivo .txt e exibir
             String line;
             while((line = br.readLine()) != null) {
-                palavras_chaves.add(line.toLowerCase().trim());
+                String[] palavras = line.toLowerCase().split("[,\\\\s]+");
+                for (String palavra : palavras) {
+
+                palavras_chaves.add(palavra.trim());
+                }
             }
 
 
@@ -52,14 +58,14 @@ public class Main {
 
 
 
-
         //
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(args[2]))) {
-            for(String palavra : formatacao.getMapa_palavra().keySet()) {
+            TreeMap<String, LinkedList<String>> mapaOrdenado = new TreeMap<>(formatacao.getMapa_palavra());
+
+            for(String palavra : mapaOrdenado.keySet()) {
                 bw.write(palavra + formatacao.getMapa_palavra().get(palavra));
                 bw.newLine();
             }
-
 
         }catch(IOException e) {
             e.printStackTrace();
