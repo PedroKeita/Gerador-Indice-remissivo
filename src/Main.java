@@ -1,3 +1,8 @@
+import buffers.BufferedReader_KeyWords;
+import buffers.BufferedReader_Texto;
+import buffers.BufferedWriter_Saida;
+import palavra.Palavras;
+
 import java.io.*;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -11,66 +16,20 @@ public class Main {
             return;
         }
 
-        Palavras formatacao = new Palavras();
-        HashSet<String> palavras_chaves = new HashSet<>();
+        String Texto = args[0];
+        String KeyWords = args[1];
+        String Saida = args[2];
 
+        BufferedReader_KeyWords Buffer_KeyWords = new BufferedReader_KeyWords(KeyWords);
+        Buffer_KeyWords.lerPalavrasChaves();
+        BufferedReader_Texto Buffer_Texto = new BufferedReader_Texto(Texto,Buffer_KeyWords.getPalavrasChaves());
+        Buffer_Texto.lerArquivoTexto();
 
-        //arquivo de texto das palavras-chave
-        //Classe do Java para ler os argumentos em .txt
-        try(BufferedReader br = new BufferedReader(new FileReader(args[1]))) {
+        Palavras palavrasFormatadas = Buffer_Texto.getFormatacao();
 
-            //ler cada linha do arquivo .txt e exibir
-            String line;
-            while((line = br.readLine()) != null) {
-                String[] palavras = line.toLowerCase().split("[,\\\\s]+");
-                for (String palavra : palavras) {
-
-                palavras_chaves.add(palavra.trim());
-                }
-            }
-
-
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        //arquivo de texto do texto
-        //Classe do Java para ler os argumentos em .txt
-        try(BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
-
-            //ler cada linha do arquivo .txt e exibir
-            String line;
-            int numero_linha = 1;
-
-            while((line = br.readLine()) != null) {
-                formatacao.divisaoPalavras(line,numero_linha, palavras_chaves);
-                numero_linha++;
-            }
-
-
-
-
-
-
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-        //
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(args[2]))) {
-            TreeMap<String, LinkedList<String>> mapaOrdenado = new TreeMap<>(formatacao.getMapa_palavra());
-
-            for(String palavra : mapaOrdenado.keySet()) {
-                bw.write(palavra + formatacao.getMapa_palavra().get(palavra));
-                bw.newLine();
-            }
-
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
-
-
+        BufferedWriter_Saida Buffer_Saida = new BufferedWriter_Saida(Saida,palavrasFormatadas);
+        Buffer_Saida.fazerSaida();
     }
+
+
 }

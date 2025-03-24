@@ -1,3 +1,5 @@
+package palavra;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -11,7 +13,7 @@ public class Palavras {
 
 
     public Palavras() {
-        this.palavra = palavra;
+        this.lista_palavra = new LinkedList<>();
     }
 
     public void divisaoPalavras(String linha, int numeroLinha, HashSet<String> palavras_chaves) {
@@ -20,17 +22,24 @@ public class Palavras {
         for(String palavra : palavras) {
             if(!palavra.isEmpty() && palavras_chaves.contains(palavra)) {
                 this.palavra = palavra;
+                lista_palavra.clear();
+                lista_palavra.add("" + numeroLinha );
+
                 mapa_palavra.putIfAbsent(this.palavra, new LinkedList<>());
 
-                LinkedList<String> lista_palavra = mapa_palavra.get(this.palavra);
+                mapa_palavra.get(this.palavra).addAll(lista_palavra);
 
-                lista_palavra.add("Linha " + numeroLinha);
+
             }
         }
     }
 
     public HashMap<String, LinkedList<String>> getMapa_palavra() {
         return mapa_palavra;
+    }
+
+    public LinkedList<String> getLista_palavra() {
+        return lista_palavra;
     }
 
 }
