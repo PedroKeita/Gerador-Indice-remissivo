@@ -16,7 +16,7 @@ public class BufferedWriter_Saida {
         this.saida = saida;
         this.palavrasformatadas = palavrasformatadas;
     }
-    Palavras formatacao = new Palavras();
+
 
     public void fazerSaida() {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(saida))) {

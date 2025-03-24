@@ -23,7 +23,7 @@ public class BufferedReader_KeyWords {
             //ler cada linha do arquivo .txt e exibir
             String line;
             while((line = br.readLine()) != null) {
-                String[] palavras = line.toLowerCase().split("[,\\\\s]+");
+                String[] palavras = line.toLowerCase().split("[^a-zA-Z0-9-]+");
                 for (String palavra : palavras) {
 
                     palavras_chaves.add(palavra.trim());

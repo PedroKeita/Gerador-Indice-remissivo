@@ -17,7 +17,7 @@ public class Palavras {
     }
 
     public void divisaoPalavras(String linha, int numeroLinha, HashSet<String> palavras_chaves) {
-        String[] palavras = linha.toLowerCase().replaceAll("[^a-zA-Z0-9 ]","").split("\\s+");
+        String[] palavras = linha.toLowerCase().replaceAll("[^a-zA-Z0-9- ]+","").split("\\s+");
 
         for(String palavra : palavras) {
             if(!palavra.isEmpty() && palavras_chaves.contains(palavra)) {
