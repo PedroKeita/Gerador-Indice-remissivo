@@ -3,12 +3,21 @@ from generalities, but by seeing how
 significant programs can be made
 clean, easy to read, easy to maintain
 and modify,
-
-
-to2
 human-engineered, efficient, and
 reliable, by the application of
 common sense and
-high-quality
-edson
 by the use of good programming practices.”
+
+
+
+
+
+
+
+
+
+
+
+
+
+edson
