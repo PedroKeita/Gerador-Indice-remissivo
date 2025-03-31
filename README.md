@@ -65,7 +65,7 @@ Arquivo `palavras.txt`:
 programming, programs, easy, by, human-engineered, and, be, to
 ```
 
-##Exemplo de Saída
+## Exemplo de Saída
 
 Arquivo `saida.txt`:
 ```
