@@ -3,16 +3,12 @@ import buffers.BufferedReader_Texto;
 import buffers.BufferedWriter_Saida;
 import palavra.Palavras;
 
-import java.io.*;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.TreeMap;
-
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println("Antes de começar, verifique se preencheu os arquivos .txt corretamente");
         if(args.length < 3) {
-            System.out.println("Ta faltando em");
+            System.out.println("Formato indevido: colocar nos argumentos <texto.txt> <palavras.txt> <saida.txt>");
             return;
         }
 
